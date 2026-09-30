@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace DataStructures.Queue
+{
+    public class Queue<T>
+    {
+        private readonly IQueue<T> queue;
+        public int Count => queue.Count;
+        public Queue(QueueType type = QueueType.Array)
+        {
+            if (type == QueueType.Array)
+            {
+                queue = new ArrayQueue<T>();
+            }
+            else 
+            {
+                queue = new LinkedListQueue<T>();
+            }
+        }
+        public void EnQueue(T Value)
+        {
+            queue.EnQueue(Value);
+        }
+        public T DeQueue()
+        {
+            return queue.DeQueue();
+        }
+        public T Peek()
+        {
+            return queue.DeQueue();
+        }
+
+    }
+    public interface IQueue<T>
+    {
+        int Count { get; }
+        void EnQueue(T Value);
+        T DeQueue();
+        T Peek();
+    }
+    public enum QueueType
+    {
+        Array = 0,      // List<T> : Dinamik dizi
+        LinkedList = 1, // DoublyLinkedList<T> : çift yönlü bağlı liste
+    }
+}

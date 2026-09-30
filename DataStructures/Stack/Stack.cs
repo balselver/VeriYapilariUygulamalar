@@ -1,0 +1,49 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace DataStructures.Stack
+{
+    public class Stack<T>
+    {
+        private readonly IStack<T> stack;
+        public int Count => stack.Count;
+        public Stack(StackType type = StackType.Array)
+        {
+            if (type == StackType.Array)
+            {
+                stack = new ArrayStack<T>();
+            }
+            else
+            {
+                stack = new LinkedListStack<T>();
+            }
+        }
+        public T Pop()
+        {
+            return stack.Pop();
+        }
+        public T Peek()
+        {
+            return stack.Peek();
+        }
+        public void Push(T Value)
+        {
+            stack.Push(Value);
+        }
+    }
+
+    public interface IStack<T>
+    {
+        int Count { get; }
+        void Push(T Value);
+        T Peek();
+        T Pop();
+    }
+    public enum StackType
+    {
+        Array = 0,       //list<T>
+        LinkedList = 1,  //SinglyLinkedList
+
+    }
+}
