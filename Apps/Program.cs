@@ -13,6 +13,91 @@ namespace Apps
     {
         static void Main(string[] args)
         {
+            
+            Console.ReadKey();
+        }
+
+        private static void BinaryTreeGetEnumerator()
+        {
+            var bst =
+                new BST<int>(new int[] { 23, 16, 45, 3, 22, 37, 99 });
+            foreach (var node in bst)
+            {
+                Console.Write(node);
+            }
+        }
+        private static void BinaryTreePathsApp()
+        {
+            var bst = new BST<int>(new int[] { 23, 16, 45, 3, 22, 37, 99, 100 });
+            bst.Remove(bst.Root, 22);
+            new BinaryTree<int>().PrintPaths(bst.Root);
+        }
+        private static void BinaryTreeNumberOfLeafsApp()
+        {
+            var bst =
+                new BST<int>
+                (new int[] { 23, 16, 45, 3, 22, 37, 99 });
+
+            bst.Remove(bst.Root, 3); //3 yaprağını sil
+            bst.Remove(bst.Root, 99); //99 yaprağını sil
+
+
+            //yaprak sayısının hesaplanması
+            Console.WriteLine($"Number of Leafs : " +
+                $"{BinaryTree<int>.NumberOfLeafs(bst.Root)}");
+
+            Console.WriteLine($"Number of full node : " +
+                $"{BinaryTree<int>.NumberOfFullNodes(bst.Root)}");
+
+            Console.WriteLine($"Number of half node : " +
+                $"{BinaryTree<int>.NumberOfHalfNode(bst.Root)}");
+        }
+        private static void BinaryTreeDeepestApp()
+        {
+            var bt = new DataStructures
+                .Tree
+                .BinaryTree
+                .BinaryTree<char>();
+
+            bt.Root = new Node<char>('F');
+            bt.Root.Left = new Node<char>('A');
+            bt.Root.Right = new Node<char>('T');
+            bt.Root.Left.Left = new Node<char>('D');
+
+            var list = bt.LevelOrderNonRecursiveTraversal(bt.Root);
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine();
+            Console.WriteLine($"Deepest Node   : {bt.DeepestNode(bt.Root)}");
+            Console.WriteLine($"Deepest Node   : {bt.DeepestNode()}");
+            Console.WriteLine($"Max Depth Node   : {BinaryTree<char>.MaxDepth(bt.Root)}");
+        }
+        private static void BinaryTreeMaxDepthApp()
+        {
+            var bst = new DataStructures
+                .Tree
+                .BST
+                .BST<byte>(new byte[] { 60, 40, 70, 20, 45, 65, 85, 90 });
+
+            var list = new DataStructures
+                .Tree.BinaryTree.BinaryTree<byte>()
+                .InOrder(bst.Root);
+
+            foreach (var node in list)
+            {
+                Console.Write($"{node,-3} ");
+            }
+            Console.WriteLine();
+
+            Console.WriteLine($"Min        : {bst.FindMin(bst.Root)}");
+            Console.WriteLine($"Max        : {bst.FindMax(bst.Root)}");
+            Console.WriteLine($"Depth      : " +
+                $"{DataStructures.Tree.BinaryTree.BinaryTree<byte>.MaxDepth(bst.Root)}");
+        }
+        private static void BİnaryTreeRemoveApp()
+        {
             var BST = new
                 BST<int>(new List<int>()
                 { 60,40,70,20,45,65,85 });
@@ -29,12 +114,9 @@ namespace Apps
 
             Console.WriteLine();
             bt.InOrder(BST.Root)
-                .ForEach(node => Console.Write($"{node,-3} "));        
-
-            Console.ReadKey();
+                .ForEach(node => Console.Write($"{node,-3} "));
         }
-
-        private static void BinaryTreeApp01()
+        private static void BinaryTreeApp()
         {
             var BST = new
                 BST<int>(new int[]
