@@ -13,21 +13,26 @@ namespace Apps
     {
         static void Main(string[] args)
         {
+         
+
+            Console.ReadKey();
+        }
+
+        private static void BİnaryHeapMAaxHeapMinHeap()
+        {
             //Asendinf = MİnHeap
             //Descending = MaxHeap
 
             var heap = new
                 DataStructures
                 .Heap
-                .BinaryHeap<int>(DataStructures.Shared.SortDirection.Ascending, 
+                .BinaryHeap<int>(DataStructures.Shared.SortDirection.Ascending,
                 new int[] { 54, 45, 36, 27, 29, 18, 21, 99 });
 
             foreach (var item in heap)
             {
                 Console.Write(item + "  ");
             }
-            
-            Console.ReadKey();
         }
 
         private static void BinaryHeapMaxHeapApp()
