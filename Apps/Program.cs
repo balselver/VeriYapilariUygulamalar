@@ -13,10 +13,56 @@ namespace Apps
     {
         static void Main(string[] args)
         {
+            //Asendinf = MİnHeap
+            //Descending = MaxHeap
+
+            var heap = new
+                DataStructures
+                .Heap
+                .BinaryHeap<int>(DataStructures.Shared.SortDirection.Ascending, 
+                new int[] { 54, 45, 36, 27, 29, 18, 21, 99 });
+
+            foreach (var item in heap)
+            {
+                Console.Write(item + "  ");
+            }
             
             Console.ReadKey();
         }
 
+        private static void BinaryHeapMaxHeapApp()
+        {
+            var heap = new DataStructures
+                .Heap
+                .MaxHeap<int>(new int[] { 54, 45, 36, 27, 29, 18, 21, 11, 99 });
+
+            Console.WriteLine($" {heap.DeleteMinMax()} : has been removed ");
+            Console.WriteLine($" {heap.DeleteMinMax()} : has been removed ");
+            Console.WriteLine($" {heap.DeleteMinMax()} : has been removed ");
+
+
+            foreach (var item in heap)
+            {
+                Console.Write(item + "  ");
+            }
+        }
+        private static void BinaryHeapMinHeapApp()
+        {
+            var heap = new DataStructures
+                .Heap
+                .MinHeap<int>(new int[] { 4, 1, 10, 8, 7, 5, 9, 3, 2 });
+
+            Console.WriteLine(heap.DeleteMinMax() + " Has been removed");
+            Console.WriteLine(heap.DeleteMinMax() + " Has been removed");
+            Console.WriteLine(heap.DeleteMinMax() + " Has been removed");
+            Console.WriteLine(heap.DeleteMinMax() + " Has been removed");
+            Console.WriteLine(heap.DeleteMinMax() + " Has been removed");
+
+            foreach (var item in heap)
+            {
+                Console.WriteLine(item);
+            }
+        }
         private static void BinaryTreeGetEnumerator()
         {
             var bst =
