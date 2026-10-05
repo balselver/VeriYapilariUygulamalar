@@ -12,12 +12,26 @@ namespace Apps
     class Program
     {
         static void Main(string[] args)
-        {
-         
+        {           
 
             Console.ReadKey();
         }
 
+        private static void DisjointSetApp()
+        {
+            var disjointSet = new DataStructures
+                .Set
+                .DisjointSet<int>(new int[] { 0, 1, 2, 3, 4, 5, 6 });
+
+            disjointSet.Union(5, 6);
+            disjointSet.Union(1, 2);
+            disjointSet.Union(0, 2);
+
+            for (int i = 0; i < 7; i++)
+            {
+                Console.WriteLine($"Find({i}) = {disjointSet.FindSet(i)}");
+            }
+        }
         private static void BİnaryHeapMAaxHeapMinHeap()
         {
             //Asendinf = MİnHeap
@@ -34,7 +48,6 @@ namespace Apps
                 Console.Write(item + "  ");
             }
         }
-
         private static void BinaryHeapMaxHeapApp()
         {
             var heap = new DataStructures
