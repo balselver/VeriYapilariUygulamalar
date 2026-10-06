@@ -12,11 +12,51 @@ namespace Apps
     class Program
     {
         static void Main(string[] args)
-        {           
+        {
+           
 
             Console.ReadKey();
         }
 
+        private static void NormalGraphApp()
+        {
+            var graph = new DataStructures
+                .Graph
+                .AdjancencySet
+                .Graph<char>(new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G' });
+
+            graph.AddEdge('A', 'B');
+            graph.AddEdge('A', 'D');
+            graph.AddEdge('C', 'D');
+            graph.AddEdge('C', 'E');
+            graph.AddEdge('D', 'E');
+            graph.AddEdge('E', 'F');
+            graph.AddEdge('F', 'G');
+
+            Console.WriteLine("Is there an edge between A and B ? {0}",
+                graph.HasEdge('A', 'B') ? "Yes" : "No");
+
+            Console.WriteLine("Is there an edge between A and B ? {0}",
+                graph.HasEdge('B', 'A') ? "Yes" : "No");
+
+            Console.WriteLine("Is there an edge between B and D ? {0}",
+                graph.HasEdge('B', 'D') ? "Yes" : "No");
+
+            Console.WriteLine("Is there an edge between D and B ? {0}",
+                graph.HasEdge('D', 'B') ? "Yes" : "No");
+
+            foreach (var key in graph)
+            {
+                Console.WriteLine(key);
+
+                foreach (var vertex in graph.GetVertex(key).Edges)
+                {
+                    Console.WriteLine("   {0} ", vertex);
+                }
+
+            }
+            Console.WriteLine($"\nNumber of vretex in graph : {graph.Count}");
+        }
         private static void DisjointSetApp()
         {
             var disjointSet = new DataStructures
